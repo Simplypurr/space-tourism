@@ -1,2 +1,2 @@
-# space-tourism-wedsite
+# space-tourism-website
 frontend-mentor challenge
