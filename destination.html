@@ -53,38 +53,45 @@
 
   <main id="main" class="grid-container grid-container--destination flow">
     <h1 class="numbered-title"><span aria-hidden="true">01</span>Pick your destination</h1>
-    <picture>
-      <source srcset="./assets/destination/image-moon.webp" type="image/webp">
-      <img src="./assets/destination/image-moon.png" alt="the moon">
+    <picture id="planet-image">
+      <source srcset="assets/destination/image-moon.webp" type="image/webp">
+      <img src="assets/destination/image-moon.png" alt="the moon">
     </picture>
-    <div class="tab-list underlined-indicators flex">
-      <button aria-selected="true" class="uppercase text-light ff-sans-cond letter-spacing-2">Moon</button>
-      <button aria-selected="false" class="uppercase text-light ff-sans-cond letter-spacing-2">Mars</button>
-      <button aria-selected="false" class="uppercase text-light ff-sans-cond letter-spacing-2">Europa</button>
-      <button aria-selected="false" class="uppercase text-light ff-sans-cond letter-spacing-2">Titan</button>
+
+    <div role="tablist" class="tab-list underlined-indicators flex">
+      <button aria-selected="true" role="tab" aria-controls="moon-tab"
+              class="uppercase ff-sans-cond text-light letter-spacing-2" tabindex="0">Moon</button>
+      <button aria-selected="false" role="tab" aria-controls="mars-tab"
+              class="uppercase ff-sans-cond text-light letter-spacing-2" tabindex="-1">Mars</button>
+      <button aria-selected="false" role="tab" aria-controls="europa-tab"
+              class="uppercase ff-sans-cond text-light letter-spacing-2" tabindex="-1">Europa</button>
+      <button aria-selected="false" role="tab" aria-controls="titan-tab"
+              class="uppercase ff-sans-cond text-light letter-spacing-2" tabindex="-1">Titan</button>
     </div>
 
-    <article class="destination-info">
-      <h2 class="fs-800 ff-serif uppercase">Moon</h2>
-      <p class="text-light">
-        See our planet as you’ve never seen it before. A perfect relaxing trip away to help
+    <article class="destination-info flow">
+      <h2 class="fs-800 uppercase ff-serif" id="destination-name">Moon</h2>
+
+      <p id="destination-description">See our planet as you’ve never seen it before. A perfect relaxing trip away to
+        help
         regain perspective and come back refreshed. While you’re there, take in some history
-        by visiting the Luna 2 and Apollo 11 landing sites.
-      </p>
+        by visiting the Luna 2 and Apollo 11 landing sites.</p>
 
       <div class="destination-meta flex">
         <div>
-          <h3 class="fs-200 uppercase ff-sans-cond letter-spacing-3 text-light">Avg. distance</h3>
-          <p class="ff-serif uppercase">384,400 km</p>
+          <h3 class="text-accent fs-200 uppercase">Avg. distance</h3>
+          <p class="ff-serif uppercase" id="destination-distance">384,400 km</p>
         </div>
         <div>
-          <h3 class="fs-200 uppercase ff-sans-cond letter-spacing-3 text-light">Est. travel time</h3>
-          <p class="ff-serif uppercase">3 days</p>
+          <h3 class="text-accent fs-200 uppercase">Est. travel time</h3>
+          <p class="ff-serif uppercase" id="destination-time">3 days</p>
         </div>
       </div>
     </article>
 
+
     <script src="./index.js"></script>
+    <script type="module" src="./destination_tabs.js"></script>
 </body>
 
 </html>
