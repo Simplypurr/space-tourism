@@ -44,10 +44,15 @@ function changeTabPanel(e) {
   const destinationDescription = document.getElementById('destination-description');
   const destinationDistance = document.getElementById('destination-distance');
   const destinationTime = document.getElementById('destination-time');
-  const picture = document.getElementById('image');
+
   const crewTitle = document.getElementById('crew-title');
   const crewName = document.getElementById('crew-name');
   const crewDescription = document.getElementById('crew-description');
+
+  const termName = document.getElementById('term-name');
+  const termDescription = document.getElementById('term-description');
+
+  const picture = document.getElementById('image');
   const sourceTag = [...picture.children][0];
   const imgTag = [...picture.children][1];
 
@@ -89,6 +94,15 @@ function changeTabPanel(e) {
       });
       break;
     case '/technology.html':
+      [termName, termDescription].forEach(item => item.innerText = '');
+      data.technology.map(item => {
+        if (item.name.toLowerCase() === tabName.slice(0, -1).trim()) {
+          termDescription.innerText = item.description;
+          termName.innerText = item.name;
+          imgTag.src = item.images.landscape;
+          sourceTag.srcset = item.images.portrait;
+        }
+      })
 
   }
 }
