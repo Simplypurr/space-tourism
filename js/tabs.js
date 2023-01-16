@@ -1,4 +1,4 @@
-import data from "./data.json" assert { type: "json" };
+import data from "../data.json" assert { type: "json" };
 
 const tabList = document.querySelector('[role="tablist"]');
 const tabs = tabList.querySelectorAll('[role="tab"]');
@@ -68,7 +68,7 @@ function changeTabPanel(e) {
   targetTab.setAttribute('aria-selected', true);
 
   switch (window.location.pathname) {
-    case '/destination.html':
+    case '/pages/destination.html':
       [destinationName, destinationDescription, destinationDistance, destinationTime].forEach(item => item.innerText = '');
       data.destinations.map(item => {
         if (item.name.toLowerCase() === tabName) {
@@ -76,34 +76,34 @@ function changeTabPanel(e) {
           destinationDescription.innerText = item.description;
           destinationDistance.innerText = item.distance;
           destinationTime.innerText = item.travel;
-          imgTag.src = item.images.png;
-          sourceTag.srcset = item.images.webp;
+          imgTag.src = `.${item.images.png}`;
+          sourceTag.srcset = `.${item.images.webp}`;
         }
       });
       break;
-    case '/crew.html':
+    case '/pages/crew.html':
       [crewTitle, crewDescription, crewName].forEach(item => item.innerText = '');
       data.crew.map(item => {
         if (item.role.toLowerCase() === tabName) {
           crewTitle.innerText = item.role;
           crewName.innerText = item.name;
           crewDescription.innerText = item.bio;
-          imgTag.src = item.images.png;
-          sourceTag.srcset = item.images.webp;
+          imgTag.src = `.${item.images.png}`;
+          sourceTag.srcset = `.${item.images.webp}`;
         }
       });
       break;
-    case '/technology.html':
+    case '/pages/technology.html':
       [termName, termDescription].forEach(item => item.innerText = '');
       data.technology.map(item => {
         if (item.name.toLowerCase() === tabName.slice(0, -1).trim()) {
           termDescription.innerText = item.description;
           termName.innerText = item.name;
-          imgTag.src = item.images.landscape;
-          sourceTag.srcset = item.images.portrait;
+          imgTag.src = `.${item.images.landscape}`;
+          sourceTag.srcset = `.${item.images.portrait}`;
         }
-      })
-
+      });
+      break;
   }
 }
 
