@@ -44,11 +44,12 @@ function changeTabPanel(e) {
   const destinationDescription = document.getElementById('destination-description');
   const destinationDistance = document.getElementById('destination-distance');
   const destinationTime = document.getElementById('destination-time');
-  const destinationPicture = document.getElementById('planet-image');
-  const sourceTag = [...destinationPicture.children][0];
-  const imgTag = [...destinationPicture.children][1];
-
-  [destinationName, destinationDescription, destinationDistance, destinationTime].forEach(item => item.innerText = '');
+  const picture = document.getElementById('image');
+  const crewTitle = document.getElementById('crew-title');
+  const crewName = document.getElementById('crew-name');
+  const crewDescription = document.getElementById('crew-description');
+  const sourceTag = [...picture.children][0];
+  const imgTag = [...picture.children][1];
 
   const targetTab = e.target;
   const tabName = targetTab.innerText.toLowerCase();
@@ -61,14 +62,34 @@ function changeTabPanel(e) {
 
   targetTab.setAttribute('aria-selected', true);
 
-  data.destinations.map(item => {
-    if (item.name.toLowerCase() === tabName) {
-      destinationName.innerText = item.name;
-      destinationDescription.innerText = item.description;
-      destinationDistance.innerText = item.distance;
-      destinationTime.innerText = item.travel;
-      imgTag.src = item.images.png;
-      sourceTag.srcset = item.images.webp;
-    };
-  });
+  switch (window.location.pathname) {
+    case '/destination.html':
+      [destinationName, destinationDescription, destinationDistance, destinationTime].forEach(item => item.innerText = '');
+      data.destinations.map(item => {
+        if (item.name.toLowerCase() === tabName) {
+          destinationName.innerText = item.name;
+          destinationDescription.innerText = item.description;
+          destinationDistance.innerText = item.distance;
+          destinationTime.innerText = item.travel;
+          imgTag.src = item.images.png;
+          sourceTag.srcset = item.images.webp;
+        }
+      });
+      break;
+    case '/crew.html':
+      [crewTitle, crewDescription, crewName].forEach(item => item.innerText = '');
+      data.crew.map(item => {
+        if (item.role.toLowerCase() === tabName) {
+          crewTitle.innerText = item.role;
+          crewName.innerText = item.name;
+          crewDescription.innerText = item.bio;
+          imgTag.src = item.images.png;
+          sourceTag.srcset = item.images.webp;
+        }
+      });
+      break;
+    case '/technology.html':
+
+  }
 }
+
