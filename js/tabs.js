@@ -68,7 +68,7 @@ function changeTabPanel(e) {
   targetTab.setAttribute('aria-selected', true);
 
   switch (window.location.pathname) {
-    case '/pages/destination.html':
+    case '/space-tourism/pages/destination.html':
       [destinationName, destinationDescription, destinationDistance, destinationTime].forEach(item => item.innerText = '');
       data.destinations.map(item => {
         if (item.name.toLowerCase() === tabName) {
@@ -81,7 +81,7 @@ function changeTabPanel(e) {
         }
       });
       break;
-    case '/pages/crew.html':
+    case '/space-tourism/pages/crew.html':
       [crewTitle, crewDescription, crewName].forEach(item => item.innerText = '');
       data.crew.map(item => {
         if (item.role.toLowerCase() === tabName) {
@@ -93,7 +93,7 @@ function changeTabPanel(e) {
         }
       });
       break;
-    case '/pages/technology.html':
+    case '/space-tourism/pages/technology.html':
       [termName, termDescription].forEach(item => item.innerText = '');
       data.technology.map(item => {
         if (item.name.toLowerCase() === tabName.slice(0, -1).trim()) {
