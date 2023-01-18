@@ -1,4 +1,4 @@
-import data from "../data.json" assert { type: "json" };
+import data from "./data.js";
 
 const tabList = document.querySelector('[role="tablist"]');
 const tabs = tabList.querySelectorAll('[role="tab"]');
